@@ -1,0 +1,90 @@
+# ==================================
+# Operating System Files
+# ==================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ==================================
+# IDEs and Editors
+# ==================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.settings/
+.project
+.classpath
+
+# ==================================
+# Node.js & Frontend (Vite / React)
+# ==================================
+node_modules/
+dist/
+dist-ssr/
+build/
+.npm/
+.eslintcache
+.stylelintcache
+.vite/
+
+# npm / yarn logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Testing / Coverage
+coverage/
+.nyc_output/
+
+# ==================================
+# Backend (Java / Spring Boot)
+# ==================================
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ==================================
+# Miscellaneous
+# ==================================
+*.log
+logs/
+temp/
+tmp/
+*.sqlite3
+*.db
