@@ -14,46 +14,48 @@ export default function CartSummary({ showCheckout = true, onCheckout }) {
 
   if (itemCount === 0) return null;
 
+  const tax = subtotal * 0.05; // Mock 5% tax to match screenshot
+  const finalTotal = total + tax;
+
   return (
-    <div className="bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] p-5 shadow-[var(--shadow-soft)]">
-      <h3 className="text-base font-bold text-[var(--color-text-primary)] mb-4">Order Summary</h3>
+    <div className="bg-[#F5F5F5] dark:bg-[var(--color-elevated)] p-8">
+      <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-5">Order Summary</h3>
+      <div className="w-full h-px bg-[var(--color-border)] mb-6"></div>
 
       {/* Summary Lines */}
-      <div className="space-y-3 text-sm">
+      <div className="space-y-4 text-sm mb-6">
         <div className="flex justify-between text-[var(--color-text-secondary)]">
           <span>Subtotal</span>
-          <span className="font-medium">{formatCurrency(subtotal)}</span>
+          <span className="font-bold text-[var(--color-text-primary)]">{formatCurrency(subtotal)}</span>
         </div>
         <div className="flex justify-between text-[var(--color-text-secondary)]">
           <span>Est. Shipping</span>
           {deliveryFee === 0 ? (
-            <span className="font-semibold text-[var(--color-success)]">FREE</span>
+            <span className="font-bold text-[var(--color-success)]">FREE</span>
           ) : (
-            <span className="font-medium">{formatCurrency(deliveryFee)}</span>
+            <span className="font-bold text-[var(--color-text-primary)]">{formatCurrency(deliveryFee)}</span>
           )}
         </div>
-
-        <div className="border-t border-[var(--color-border)] pt-3 flex justify-between items-baseline">
-          <span className="font-bold text-[var(--color-text-primary)]">Total</span>
-          <span className="text-2xl font-bold text-[var(--color-text-primary)]">
-            {formatCurrency(total)}
-          </span>
+        <div className="flex justify-between text-[var(--color-text-secondary)]">
+          <span>Tax</span>
+          <span className="font-bold text-[var(--color-text-primary)]">{formatCurrency(tax)}</span>
         </div>
       </div>
 
-      {/* CoD indicator */}
-      <div className="mt-4 flex items-center gap-2 p-3 bg-[var(--color-primary-soft)] rounded-lg">
-        <Banknote className="w-5 h-5 text-[var(--color-primary)] flex-shrink-0" />
-        <p className="text-xs font-medium text-[var(--color-primary)]">
-          Cash on Delivery — pay when you receive
-        </p>
+      <div className="w-full h-px bg-[var(--color-border)] mb-6"></div>
+
+      <div className="flex justify-between items-baseline mb-8">
+        <span className="font-bold text-[var(--color-text-primary)] text-lg">Total</span>
+        <span className="text-2xl font-black text-[var(--color-text-primary)]">
+          {formatCurrency(finalTotal)}
+        </span>
       </div>
 
       {/* Checkout Button */}
       {showCheckout && onCheckout && (
         <button
           onClick={onCheckout}
-          className="w-full mt-4 px-6 py-4 bg-[var(--color-text-primary)] text-[var(--color-surface)] text-xs font-bold uppercase tracking-[0.2em] rounded-lg hover:opacity-90 transition-all duration-200 cursor-pointer"
+          className="w-full px-6 py-4 bg-black dark:bg-[var(--color-text-primary)] text-white dark:text-[var(--color-surface)] text-[11px] font-bold uppercase tracking-[0.2em] hover:bg-gray-800 dark:hover:opacity-90 transition-all duration-200 cursor-pointer rounded-none"
         >
           Proceed to Checkout
         </button>

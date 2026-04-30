@@ -30,36 +30,40 @@ export default function CartPage() {
   }
 
   return (
-    <div className="px-4 py-4 animate-fade-in">
+    <div className="px-4 md:px-8 py-8 md:py-12 max-w-7xl mx-auto animate-fade-in">
       {/* Header */}
-      <div className="mb-4">
-        <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[var(--color-text-muted)]">
+      <div className="mb-8">
+        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-2">
           Shopping Cart
         </p>
-        <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">Review Your Order</h2>
+        <h2 className="text-3xl md:text-4xl font-black text-[var(--color-text-primary)]">Review Your Order</h2>
       </div>
 
-      {/* Cart Items */}
-      <div className="space-y-3 mb-6">
-        {items.map((item) => (
-          <CartItem key={item.productId} item={item} />
-        ))}
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+        {/* Left Column: Cart Items */}
+        <div className="flex-1 w-full space-y-4">
+          {items.map((item) => (
+            <CartItem key={item.productId} item={item} />
+          ))}
+        </div>
+
+        {/* Right Column: Summary */}
+        <div className="w-full lg:w-[400px] xl:w-[450px] sticky top-24">
+          <CartSummary
+            showCheckout
+            onCheckout={() => navigate('/checkout')}
+          />
+          
+          {/* Continue Shopping */}
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center gap-2 mt-6 text-sm font-semibold text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors cursor-pointer w-full justify-center"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span className="uppercase tracking-[0.1em] text-xs">Continue Shopping</span>
+          </button>
+        </div>
       </div>
-
-      {/* Summary */}
-      <CartSummary
-        showCheckout
-        onCheckout={() => navigate('/checkout')}
-      />
-
-      {/* Continue Shopping */}
-      <button
-        onClick={() => navigate('/')}
-        className="flex items-center gap-2 mt-6 text-sm font-semibold text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors cursor-pointer"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        <span className="uppercase tracking-wide text-xs">Continue Shopping</span>
-      </button>
     </div>
   );
 }
